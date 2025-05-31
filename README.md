@@ -1,80 +1,53 @@
-# UI-006: Design Product List and Single Product Pages
+# 🛒 UI-007: Implement Cart UI and Quantity Logic
 
-This update implements a visually engaging **Product List Page** and a dynamic **Single Product Page** using **Next.js App Router**, **React**, and **Tailwind CSS** for a restaurant food delivery app.
-
----
-
-## 📁 File Structure Overview
-
-| Page | Path | Description |
-|------|------|-------------|
-| 🧾 Product List Page | `src/app/menu/page.jsx` | Lists all available pizza products |
-| 🍕 Single Product Page | `src/app/product/[id]/page.jsx` | Shows detailed view for a selected pizza |
-| 💸 Price Component | `src/components/Price.jsx` | Interactive price calculator for single product page |
+This component (`CartPage.jsx`) is part of a **Restaurant Food Delivery App** built with **Next.js** and **Tailwind CSS**. It implements the cart interface where users can view their selected food items, check pricing details, and proceed to checkout.
 
 ---
 
-## 🚀 Features Implemented
+## 📄 File Location
 
-### ✅ Product List Page (`/menu`)
-
-- **Responsive Grid Layout**: Auto-adjusts for mobile, tablet, and desktop.
-- **Image Display**: Product images rendered using Next.js `Image` component for optimization.
-- **Client-side Routing**: Clicking a product leads to its `/product/[id]` page via `Link`.
-- **Hover Interactions**:
-    - Displays **price** by default.
-    - Reveals an **Add to Cart** button on hover.
-- **Tailwind CSS Styling**: Modern, utility-first design system.
-
-### ✅ Single Product Page (`/product/[id]`)
-
-- **Optimized Image & Layout**: Full-width image display with adaptive sizing.
-- **Dynamic Price Calculation**:
-    - Selectable **size options** (Small, Medium, Large).
-    - Adjustable **quantity** (min 1, max 9).
-    - Live-updated total price based on selections.
-- **Interactive UI**: Built using React hooks (`useState`, `useEffect`).
+`D:\portfolio-projects\restaurant-food-delivery-app\src\app\cart\page.jsx`
 
 ---
 
-## 🔧 Components
+## ✅ Features Implemented
 
-### 🧩 `Price.jsx`
+- **Product Listing UI**  
+  Displays a list of selected cart items with images, names, sizes, and prices.
 
-A reusable price calculator component that:
+- **Responsive Layout**  
+  Fully responsive using Tailwind’s utility classes:
+    - `flex-col` for mobile
+    - `lg:flex-row` for desktop
 
-- Accepts:
-    - `price`: base price.
-    - `options`: size-based price variations.
-    - `id`: product identifier.
-- Handles:
-    - **Live price update** on size or quantity change.
-    - **Add to Cart** button placeholder.
+- **Price Breakdown Panel**  
+  A summary section including:
+    - Subtotal with item count
+    - Service cost
+    - Delivery cost
+    - Total cost (incl. VAT)
 
----
+- **Checkout CTA Button**  
+  A call-to-action button for users to proceed with checkout.
 
-## 🖼️ UI Preview (Visual Description)
-
-| Page | Layout |
-|------|--------|
-| **Product List** | Grid of 2-3 columns, each product in a colored card with image, title, price/add button toggle. |
-| **Single Product** | Split screen: image on one side, title/description/price controls on the other. Responsive layout for mobile and desktop. |
-
----
-
-## 🛠️ Tech Stack
-
-- **Framework**: [Next.js 14+ App Router](https://nextjs.org/docs/app)
-- **Language**: React (JavaScript)
-- **Styling**: Tailwind CSS
-- **Image Optimization**: `next/image`
-- **Routing**: Dynamic routing with `[id]` folders
+- **Visual Feedback Elements**
+    - Each product shows an **"X"** icon to simulate item removal (interactive logic to be added).
 
 ---
 
-## 🧪 Test Instructions
+## 🧱 Component Structure
 
-1. **Run the development server:**
-
-   ```bash
-   npm run dev
+```jsx
+<CartPage />
+├── Products Container (left side on desktop)
+│   ├── Image (product photo)
+│   ├── Product Info (name, size)
+│   └── Price + Remove Icon
+│
+└── Payment Summary Container (right side on desktop)
+    ├── Subtotal
+    ├── Service Cost
+    ├── Delivery Cost
+    ├── Divider
+    ├── Total Price
+    └── Checkout Button
