@@ -1,99 +1,80 @@
-# 🍕 Restaurant Food Delivery App — UI-005: Add Offers and Category Display
+# UI-006: Design Product List and Single Product Pages
 
-This update introduces a dynamic category menu and detailed category product listings. Users can now browse through food categories like **Pastas**, **Burgers**, and **Pizzas**, each offering a unique visual experience and an easy navigation system.
-
----
-
-## ✨ Features Introduced
-
-### ✅ Category Menu Page (`/menu`)
-- A responsive layout displaying all food categories.
-- Each category section includes:
-    - A visually rich background image.
-    - Title and description.
-    - An "Explore" button (visible only on 2XL screens).
-- Clickable areas using `Next.js` `Link` to navigate to individual category pages (`/menu/[slug]`).
-
-> **File:** `src/app/menu/page.jsx`  
-> **Component:** `MenuPage`
+This update implements a visually engaging **Product List Page** and a dynamic **Single Product Page** using **Next.js App Router**, **React**, and **Tailwind CSS** for a restaurant food delivery app.
 
 ---
 
-### ✅ Category Product Page (`/menu/[category]`)
-- Displays a list of products (e.g., pizzas) related to the selected category.
-- Each product card includes:
-    - Optimized image using `next/image`.
-    - Title, description, and price.
-    - "Add to Cart" button visible on hover.
-- Responsive grid layout (mobile, tablet, desktop).
-- Client-side navigation to individual product pages via `/product/[id]`.
+## 📁 File Structure Overview
 
-> **File:** `src/app/menu/[category]/page.jsx`  
-> **Component:** `CategoryPage`
+| Page | Path | Description |
+|------|------|-------------|
+| 🧾 Product List Page | `src/app/menu/page.jsx` | Lists all available pizza products |
+| 🍕 Single Product Page | `src/app/product/[id]/page.jsx` | Shows detailed view for a selected pizza |
+| 💸 Price Component | `src/components/Price.jsx` | Interactive price calculator for single product page |
 
 ---
 
-## 🧾 Code Structure Summary
+## 🚀 Features Implemented
 
-### 📁 `MenuPage.jsx`
-- Utilizes a `menu` array to dynamically render category sections.
-- Navigation built with dynamic routing: `/menu/[slug]`.
+### ✅ Product List Page (`/menu`)
 
-### 📁 `CategoryPage.jsx`
-- Uses a hardcoded `pizzas` array to render category-specific product cards.
-- Each card includes image rendering, hover interactions, and dynamic links to product pages.
+- **Responsive Grid Layout**: Auto-adjusts for mobile, tablet, and desktop.
+- **Image Display**: Product images rendered using Next.js `Image` component for optimization.
+- **Client-side Routing**: Clicking a product leads to its `/product/[id]` page via `Link`.
+- **Hover Interactions**:
+    - Displays **price** by default.
+    - Reveals an **Add to Cart** button on hover.
+- **Tailwind CSS Styling**: Modern, utility-first design system.
 
----
+### ✅ Single Product Page (`/product/[id]`)
 
-## 🚀 Technologies Used
-
-- **Next.js 13+ App Router**
-- **React 18**
-- **Tailwind CSS**
-- **Next/Image** for image optimization
-- **Client-Side Navigation** via `next/link`
-
----
-
-## 🖼 Screenshots
-
-<details>
-<summary>Menu Page Preview</summary>
-
-![Menu Page Preview](./public/temporary/m1.png)
-</details>
-
-<details>
-<summary>Category Page Preview</summary>
-
-![Category Page Preview](./public/temporary/p1.png)
-</details>
+- **Optimized Image & Layout**: Full-width image display with adaptive sizing.
+- **Dynamic Price Calculation**:
+    - Selectable **size options** (Small, Medium, Large).
+    - Adjustable **quantity** (min 1, max 9).
+    - Live-updated total price based on selections.
+- **Interactive UI**: Built using React hooks (`useState`, `useEffect`).
 
 ---
 
-## 📌 To Do
+## 🔧 Components
 
-- Replace hardcoded arrays with dynamic data from an API (e.g., Strapi, Firebase).
-- Improve accessibility (add `alt` text to images).
-- Implement cart functionality.
-- Add category filtering and sorting options.
+### 🧩 `Price.jsx`
 
----
+A reusable price calculator component that:
 
-## 🧠 Notes
-
-- UI elements have been styled with Tailwind CSS for responsiveness and rapid development.
-- `Explore` and `Add to Cart` buttons use conditional rendering to enhance user interaction.
-
----
-
-## 🧑‍💻 Author
-
-Developed by "Mohammad Arifur Rahman"  
-For questions or contributions, feel free to open issues or pull requests.
+- Accepts:
+    - `price`: base price.
+    - `options`: size-based price variations.
+    - `id`: product identifier.
+- Handles:
+    - **Live price update** on size or quantity change.
+    - **Add to Cart** button placeholder.
 
 ---
 
-## 📄 License
+## 🖼️ UI Preview (Visual Description)
 
-This project is licensed under the [MIT License](LICENSE).
+| Page | Layout |
+|------|--------|
+| **Product List** | Grid of 2-3 columns, each product in a colored card with image, title, price/add button toggle. |
+| **Single Product** | Split screen: image on one side, title/description/price controls on the other. Responsive layout for mobile and desktop. |
+
+---
+
+## 🛠️ Tech Stack
+
+- **Framework**: [Next.js 14+ App Router](https://nextjs.org/docs/app)
+- **Language**: React (JavaScript)
+- **Styling**: Tailwind CSS
+- **Image Optimization**: `next/image`
+- **Routing**: Dynamic routing with `[id]` folders
+
+---
+
+## 🧪 Test Instructions
+
+1. **Run the development server:**
+
+   ```bash
+   npm run dev
