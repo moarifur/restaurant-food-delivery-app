@@ -1,53 +1,48 @@
-# 🛒 UI-007: Implement Cart UI and Quantity Logic
+# UI-008: Responsive Login and Orders Page
 
-This component (`CartPage.jsx`) is part of a **Restaurant Food Delivery App** built with **Next.js** and **Tailwind CSS**. It implements the cart interface where users can view their selected food items, check pricing details, and proceed to checkout.
+## Overview
 
----
+This UI module delivers two essential, fully responsive pages for a modern web application:
 
-## 📄 File Location
+- **Login Page**: A clean, mobile-friendly layout offering social login options.
+- **Orders Page**: A static, visually organized table for mock order data presentation.
 
-`D:\portfolio-projects\restaurant-food-delivery-app\src\app\cart\page.jsx`
-
----
-
-## ✅ Features Implemented
-
-- **Product Listing UI**  
-  Displays a list of selected cart items with images, names, sizes, and prices.
-
-- **Responsive Layout**  
-  Fully responsive using Tailwind’s utility classes:
-    - `flex-col` for mobile
-    - `lg:flex-row` for desktop
-
-- **Price Breakdown Panel**  
-  A summary section including:
-    - Subtotal with item count
-    - Service cost
-    - Delivery cost
-    - Total cost (incl. VAT)
-
-- **Checkout CTA Button**  
-  A call-to-action button for users to proceed with checkout.
-
-- **Visual Feedback Elements**
-    - Each product shows an **"X"** icon to simulate item removal (interactive logic to be added).
+Both components are designed as **purely presentational** and can be integrated into any authentication or e-commerce flow.
 
 ---
 
-## 🧱 Component Structure
+## 🔧 Tech Stack
+
+- **Framework**: React (w/ Next.js)
+- **Styling**: Tailwind CSS
+- **Assets**: Static images (`/loginBg.png`, `/google.png`, `/facebook.png`)
+
+---
+
+## 📁 Components
+
+### 1. `LoginPage.jsx`
+
+- **Purpose**: Renders a login screen UI.
+- **Features**:
+    - Two social login buttons (Google & Facebook)
+    - Responsive split layout with an image and text/form
+    - Informational text and contact link
+
+### 2. `OrdersPage.jsx`
+
+- **Purpose**: Displays static order data in a tabular format.
+- **Features**:
+    - Table headers adapt for mobile (`Order ID` and `Products` hidden on small screens)
+    - Clean design using Tailwind spacing and utility classes
+    - Mock order data for UI layout validation
+
+---
+
+## 🧪 Usage
+
+These components are intended for **frontend display only** and do not contain authentication logic or dynamic data fetching. You can integrate them into your project by importing and routing as needed:
 
 ```jsx
-<CartPage />
-├── Products Container (left side on desktop)
-│   ├── Image (product photo)
-│   ├── Product Info (name, size)
-│   └── Price + Remove Icon
-│
-└── Payment Summary Container (right side on desktop)
-    ├── Subtotal
-    ├── Service Cost
-    ├── Delivery Cost
-    ├── Divider
-    ├── Total Price
-    └── Checkout Button
+import LoginPage from "@/components/LoginPage";
+import OrdersPage from "@/components/OrdersPage";
