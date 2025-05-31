@@ -1,10 +1,15 @@
 import React from 'react';
+import Slider from "@/components/Slider";
+import Featured from "@/components/Featured";
+import Offer from "@/components/Offer";
 
 const Page = () => {
     return (
-        <div>
-          <div className="bg-amber-500">Hello</div>
-        </div>
+        <>
+          <Slider />
+          <Featured />
+          <Offer />
+        </>
     );
 };
 
