@@ -1,141 +1,99 @@
-# 🍽️ Restaurant Food Delivery App
+# 🍕 Restaurant Food Delivery App — UI-005: Add Offers and Category Display
 
-A full-stack responsive restaurant food ordering web application inspired by Lama Dev's YouTube tutorials. This project is built using Next.js, Tailwind CSS, JavaScript, Prisma, PostgreSQL, Stripe, and more.
-
----
-
-## 📚 Project Structure
-
-This project is divided into two parts:
-
-### 🖌️ Part 1: Frontend UI Design
-From: [YouTube: Restaurant Food Delivery App Design](https://www.youtube.com/watch?v=gXlcwtS40LA)
-
-- Next.js App Router with JavaScript
-- Tailwind CSS Responsive Design
-- Responsive Navbar, Hero Slider, Product Cards, Cart Page
-- Login Page and Orders Page UI
-
-### 🔧 Part 2: Full-Stack Functionality
-From: [YouTube: Full Stack Food Ordering App](https://youtu.be/aYzT06aQkGI?si=YuUJcvkikVrWgdGL)
-
-- PostgreSQL via Docker
-- Prisma ORM (Database Modeling)
-- API Routes with CRUD
-- Auth.js (Authentication & Role-based Authorization)
-- React Query & Zustand
-- Stripe Payments
+This update introduces a dynamic category menu and detailed category product listings. Users can now browse through food categories like **Pastas**, **Burgers**, and **Pizzas**, each offering a unique visual experience and an easy navigation system.
 
 ---
 
-## 📁 Technologies Used
+## ✨ Features Introduced
 
-- Next.js (App Router)
-- JavaScript
-- Tailwind CSS
-- Prisma
-- PostgreSQL (Docker)
-- Stripe
-- Zustand
-- React Query
-- Auth.js
+### ✅ Category Menu Page (`/menu`)
+- A responsive layout displaying all food categories.
+- Each category section includes:
+    - A visually rich background image.
+    - Title and description.
+    - An "Explore" button (visible only on 2XL screens).
+- Clickable areas using `Next.js` `Link` to navigate to individual category pages (`/menu/[slug]`).
 
----
-
-## 🚀 Getting Started
-
-1. Clone the repository  
-   `git clone https://github.com/moarifur/restaurant-food-delivery-app.git`
-
-2. Install dependencies  
-   `npm install`
-
-3. Run the development server  
-   `npm run dev`
+> **File:** `src/app/menu/page.jsx`  
+> **Component:** `MenuPage`
 
 ---
 
-# EPIC-UI-DESIGN - UI/UX Frontend with Tailwind + Next.js
+### ✅ Category Product Page (`/menu/[category]`)
+- Displays a list of products (e.g., pizzas) related to the selected category.
+- Each product card includes:
+    - Optimized image using `next/image`.
+    - Title, description, and price.
+    - "Add to Cart" button visible on hover.
+- Responsive grid layout (mobile, tablet, desktop).
+- Client-side navigation to individual product pages via `/product/[id]`.
 
-This is a modern, fully responsive UI/UX frontend built using **Next.js (App Router)** and **Tailwind CSS**, aimed at delivering a sleek and intuitive e-commerce experience.
-
-## 📦 Tech Stack
-
-- **Framework**: [Next.js](https://nextjs.org/)
-- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
-- **Font**: Geist (Google Fonts)
-- **Image Optimization**: Next.js `Image` component
-- **Routing**: App Router
-- **Client Components**: For dynamic interactions
-- **Aliasing**: `@` for `src/`
+> **File:** `src/app/menu/[category]/page.jsx`  
+> **Component:** `CategoryPage`
 
 ---
 
-## ✅ Completed User Stories
+## 🧾 Code Structure Summary
 
-### `UI-001`: Setup Next.js project with Tailwind
+### 📁 `MenuPage.jsx`
+- Utilizes a `menu` array to dynamically render category sections.
+- Navigation built with dynamic routing: `/menu/[slug]`.
 
-- Initialized project via `npx create-next-app@latest`
-- Plain JavaScript setup, no ESLint
-- Tailwind CSS, App Router, alias `@`, and Turbo Dev enabled
-- Cleaned boilerplate code, removed default assets, updated favicon
-
-### `UI-002`: Create basic layout and navigation
-
-- Created layout components:
-   - `Notification`
-   - `Navbar` with responsive links, login/orders logic, and mobile menu
-   - `Footer`
-- Integrated layout in `app/layout.js`
-
-### `UI-003`: Responsive Homepage with Hero Slider
-
-- Implemented full-screen slider using a client component
-- Slides rotate every 4 seconds with dynamic text and images
-- Responsive across all screen sizes
-
-### `UI-004`: Featured Product Section
-
-- Created a `Featured` component (details to be extended)
-- Structured the homepage using:
-   - `Slider`
-   - `Featured`
-   - `Offer` (placeholder for offers and categories)
+### 📁 `CategoryPage.jsx`
+- Uses a hardcoded `pizzas` array to render category-specific product cards.
+- Each card includes image rendering, hover interactions, and dynamic links to product pages.
 
 ---
 
-## 📂 Folder Structure
+## 🚀 Technologies Used
+
+- **Next.js 13+ App Router**
+- **React 18**
+- **Tailwind CSS**
+- **Next/Image** for image optimization
+- **Client-Side Navigation** via `next/link`
 
 ---
 
-## 👨‍💻 Author
+## 🖼 Screenshots
 
-Built by "Mohammad Arifur Rahman" inspired by [Lama Dev](https://www.youtube.com/@LamaDev)
+<details>
+<summary>Menu Page Preview</summary>
 
-### ✅ `LICENSE` (MIT License)
+![Menu Page Preview](./public/temporary/m1.png)
+</details>
 
-```txt
-MIT License
+<details>
+<summary>Category Page Preview</summary>
 
-Copyright (c) 2025 Mohammad Arifur Rahman
+![Category Page Preview](./public/temporary/p1.png)
+</details>
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the “Software”), to deal
-in the Software without restriction, including without limitation the rights to
-use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
-of the Software, and to permit persons to whom the Software is furnished to do
-so, subject to the following conditions:
+---
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+## 📌 To Do
 
-THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+- Replace hardcoded arrays with dynamic data from an API (e.g., Strapi, Firebase).
+- Improve accessibility (add `alt` text to images).
+- Implement cart functionality.
+- Add category filtering and sorting options.
 
+---
 
+## 🧠 Notes
 
+- UI elements have been styled with Tailwind CSS for responsiveness and rapid development.
+- `Explore` and `Add to Cart` buttons use conditional rendering to enhance user interaction.
+
+---
+
+## 🧑‍💻 Author
+
+Developed by "Mohammad Arifur Rahman"  
+For questions or contributions, feel free to open issues or pull requests.
+
+---
+
+## 📄 License
+
+This project is licensed under the [MIT License](LICENSE).
